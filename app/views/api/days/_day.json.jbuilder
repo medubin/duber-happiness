@@ -1,0 +1,1 @@
+json.extract! day, :date, :happiness, :user_id

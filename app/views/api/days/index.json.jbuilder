@@ -1,0 +1,1 @@
+json.partial! 'api/days/day', collection: @days, as: :day
