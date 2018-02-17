@@ -1,9 +1,10 @@
-import {RECEIVE_DAY, RECEIVE_DAYS} from '../actions/day_actions';
+import {RECEIVE_DAY, RECEIVE_DAYS, SELECT_DAY} from '../actions/day_actions';
 import merge from 'lodash/merge';
 import {hashDays} from '../util/days_util';
 
 const _nullDays = Object.freeze({
-    days: {}
+    days: {},
+    selectedDay: null
 });
 
 const DayReducer = (state = _nullDays, action) => {
@@ -15,6 +16,9 @@ const DayReducer = (state = _nullDays, action) => {
             return newState;
         case RECEIVE_DAY:
             newState.days = merge(newState.days, action.data);
+            return newState;
+        case SELECT_DAY:
+            newState.selectedDay = action.data;
             return newState;
         default:
             return state;
