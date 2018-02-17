@@ -1,0 +1,36 @@
+.day-container {
+    display: grid;
+    grid-template-columns: 53px 53px 53px 53px 53px 53px 53px;
+    grid-auto-rows: 53px;
+}
+
+.day {
+    border: 1px solid black;
+    height: 50px;
+    width: 50px;
+}
+
+.happiness0 {
+    background-color: lightgrey;
+}
+
+.happiness1 {
+    background-color: darkblue;
+
+}
+
+.happiness2 {
+    background-color: blue;
+}
+
+.happiness3 {
+    background-color: turquoise;
+}
+
+.happiness4 {
+    background-color: lightgreen;
+}
+
+.happiness5 {
+    background-color: green;
+}

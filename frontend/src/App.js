@@ -9,6 +9,7 @@ import { getCurrentUser } from './user/actions/user_actions'
 import UserForm from './user/components/user_form';
 import Modal from './modal/components/modal';
 import Navbar from './navbar/components/navbar';
+import ShowDays from './day/components/show_days/show_days';
 
 const mapStateToProps = ({user}) => ({
   userFetched: user.userFetched,
@@ -38,6 +39,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/login" component={UserForm} />
             <Route path="/signup" component={UserForm} />
+            <Route path="/" component={ShowDays} />
           </Switch>
         </div>
       </div>

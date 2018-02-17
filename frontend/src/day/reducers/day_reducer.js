@@ -1,8 +1,9 @@
 import {RECEIVE_DAY, RECEIVE_DAYS} from '../actions/day_actions';
 import merge from 'lodash/merge';
+import {hashDays} from '../util/days_util';
 
 const _nullDays = Object.freeze({
-    days: []
+    days: {}
 });
 
 const DayReducer = (state = _nullDays, action) => {
@@ -10,7 +11,7 @@ const DayReducer = (state = _nullDays, action) => {
     Object.freeze(state);
     switch(action.type) {
         case RECEIVE_DAYS:
-            newState.templates = action.templates;
+            newState.days = hashDays(action.days);
             return newState;
         case RECEIVE_DAY:
             newState.days = merge(newState.days, action.data);
