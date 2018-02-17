@@ -7,7 +7,7 @@ export const getDays = () => {
     })
 }
 
-export const createTemplate = (dayData) => {
+export const createDay = (dayData) => {
     return $.ajax({
         method: 'POST',
         url: '/api/days',

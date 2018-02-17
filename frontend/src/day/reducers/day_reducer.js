@@ -1,4 +1,4 @@
-import {RECEIVE_DAY, RECEIVE_DAYS} from '../actions/days_actions';
+import {RECEIVE_DAY, RECEIVE_DAYS} from '../actions/day_actions';
 import merge from 'lodash/merge';
 
 const _nullDays = Object.freeze({
