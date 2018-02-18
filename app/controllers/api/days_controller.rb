@@ -11,12 +11,18 @@ class Api::DaysController < ApplicationController
     def create
         if (!current_user)
             render json: "User not found", status: 422
-        else 
+            return
+        end
+        @day = Day.find_by user_id: current_user.id, date: day_params[:date]
+        if (@day)
+            @day.happiness = day_params[:happiness]
+        else
             @day = Day.create(day_params)
             @day.user_id = current_user.id
-            @day.save
-            render "api/days/show"
         end
+        
+        @day.save
+        render "api/days/show"
     end
 
     private

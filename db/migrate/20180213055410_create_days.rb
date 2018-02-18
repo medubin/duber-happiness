@@ -6,5 +6,6 @@ class CreateDays < ActiveRecord::Migration[5.1]
       t.date :date, null: false
       t.timestamps
     end
+    add_index :days, [:user_id, :date], unique: true
   end
 end

@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180213055410) do
     t.date "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "date"], name: "index_days_on_user_id_and_date", unique: true
   end
 
   create_table "users", force: :cascade do |t|
