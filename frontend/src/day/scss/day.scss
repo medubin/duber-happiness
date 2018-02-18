@@ -1,3 +1,5 @@
+@import 'common/scss/_colors.scss';
+
 .days-container {
     display: grid;
     grid-template-columns: 53px 53px 53px 53px 53px 53px 53px;
@@ -11,27 +13,27 @@
 }
 
 .happiness0 {
-    background-color: lightgrey;
+    background-color: $HAPPINESS0;
 }
 
 .happiness1 {
-    background-color: darkblue;
+    background-color:$HAPPINESS1;
 }
 
 .happiness2 {
-    background-color: blue;
+    background-color: $HAPPINESS2;
 }
 
 .happiness3 {
-    background-color: turquoise;
+    background-color: $HAPPINESS3;
 }
 
 .happiness4 {
-    background-color: lightgreen;
+    background-color: $HAPPINESS4;
 }
 
 .happiness5 {
-    background-color: green;
+    background-color: $HAPPINESS5;
 }
 
 .flex-container {
