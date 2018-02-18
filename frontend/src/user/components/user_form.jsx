@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
 	signup: (user) => dispatch(signup(user)),
 	closeModal: () => dispatch(closeModal)
 
+
   // return {
     // processForm: user => dispatch(processForm(user)),
     // formType
@@ -33,7 +34,8 @@ class UserForm extends Form {
 			username: "",
 			password: "",
 			passwordCheck: "",
-			errors: []
+			errors: [],
+			formType: this.props.formType
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
@@ -64,7 +66,7 @@ class UserForm extends Form {
 			return;
 		}
 		const user = this.state;
-		if (this.props.formType === "signup") {
+		if (this.state.formType === "signup") {
 			this.props.signup({user});
 		} else {
 			this.props.login({user});
@@ -76,7 +78,7 @@ class UserForm extends Form {
 		if (this.state.password.length < 6) {
 			errors.push("The Password must be at least 6 characters long.");
 		}
-		if (this.props.formType === "signup" && this.state.password !== this.state.passwordCheck) {
+		if (this.state.formType === "signup" && this.state.password !== this.state.passwordCheck) {
 			errors.push("Passwords don't match.");
 		}
 
@@ -85,11 +87,13 @@ class UserForm extends Form {
 		return errors.length !== 0;
 	}
 
+	
 	navLink() {
-		if (this.props.formType === "login") {
-			return <Link to="/signup">sign up instead</Link>;
+		if (this.state.formType === "login") {
+			// return <Link to="/signup"></Link>;
+			return <div onClick={() => this.setState({formType: 'signup'})} >sign up instead</div>
 		} else {
-			return <Link to="/login">log in instead</Link>;
+			return <div onClick={() => this.setState({formType: 'login'})} >log in instead</div>
 		}
 	}
 
@@ -98,7 +102,7 @@ class UserForm extends Form {
       {name: 'Username', description: 'Username', type: 'text', state: 'username'},
       {name: 'Password', description: 'Password', type: 'password', state: 'password'}
     ]
-    if (this.props.formType === 'signup') {
+    if (this.state.formType === 'signup') {
       fields.push({name: 'Password', description: 'Retype password', type: 'password', state: 'passwordCheck'})
     }
     return fields
@@ -109,7 +113,7 @@ class UserForm extends Form {
 			<div className="form-container">
         Welcome to Dubster!
         <br/>
-        Please {this.props.formType} or {this.navLink()}
+        Please {this.state.formType} or {this.navLink()}
         {this.renderForm()}
 			</div>
 		);
