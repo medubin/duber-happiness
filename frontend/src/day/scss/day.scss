@@ -1,4 +1,4 @@
-.day-container {
+.days-container {
     display: grid;
     grid-template-columns: 53px 53px 53px 53px 53px 53px 53px;
     grid-auto-rows: 53px;
@@ -32,6 +32,16 @@
 
 .happiness5 {
     background-color: green;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.happiness-picker {
+    border: 1px solid black;
+    height: 50px;
+    width: 50px;
 }
 
 .selected {

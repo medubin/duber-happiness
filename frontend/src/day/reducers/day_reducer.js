@@ -15,7 +15,7 @@ const DayReducer = (state = _nullDays, action) => {
             newState.days = hashDays(action.days);
             return newState;
         case RECEIVE_DAY:
-            newState.days = merge(newState.days, action.data);
+            newState.days[action.data.date] = action.data.happiness;
             return newState;
         case SELECT_DAY:
             newState.selectedDay = action.data;

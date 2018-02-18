@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../scss/day.css'
 
 const Day = (props) => {
     let selected = props.selected ? "selected" : '';

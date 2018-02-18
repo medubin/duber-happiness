@@ -47,7 +47,7 @@ class ShowDays extends React.Component {
     }
 
     render() {
-        return <div className='day-container'>{this.renderDays()}</div>
+        return <div className='days-container'>{this.renderDays()}</div>
     }
 }
 

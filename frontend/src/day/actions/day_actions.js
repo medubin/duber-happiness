@@ -8,9 +8,10 @@ export const getDays = () => dispatch => (
     API.getDays().then(days => dispatch(receiveDays(days)))
 )
 
-export const createDay = (dayData) => dispatch => (
-    API.createDay(dayData).then(day => dispatch(receiveDay(day)))
-)
+export const createDay = (dayData) => dispatch => {
+    dispatch(receiveDay(dayData));
+    API.createDay(dayData);//.then(day => dispatch(receiveDay(day)))
+}
 
 export const selectDay = (day) => dispatch => (
     dispatch(receiveSelectedDay(day))
