@@ -3,21 +3,27 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login, signup } from '../actions/user_actions';
 import Form from '../../common/components/form'
+import {closeModal} from '../../modal/actions/modal_actions'
 
 const mapStateToProps = ({ user }) => ({
   loggedIn: Boolean(user.currentUser),
   errors: user.errors
 });
 
-const mapDispatchToProps = (dispatch, { location }) => {
-  const formType = location.pathname.slice(1);
-  const processForm = (formType === 'login') ? login : signup;
+const mapDispatchToProps = (dispatch) => ({
+	// const formType = location.pathname.slice(1);
+	// const formType = 'login';
+	// const processForm = (formType === 'login') ? login : signup;
+	
+	login: (user) => dispatch(login(user)),
+	signup: (user) => dispatch(signup(user)),
+	closeModal: () => dispatch(closeModal)
 
-  return {
-    processForm: user => dispatch(processForm(user)),
-    formType
-  };
-};
+  // return {
+    // processForm: user => dispatch(processForm(user)),
+    // formType
+  // };
+});
 
 
 class UserForm extends Form {
@@ -46,13 +52,23 @@ class UserForm extends Form {
 		}
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.loggedIn) {
+			this.props.closeModal();
+		}
+	}
+
 	handleSubmit(e) {
 		e.preventDefault();
 		if (this.handleFrontEndErrors()) {
 			return;
 		}
 		const user = this.state;
-		this.props.processForm({user});
+		if (this.props.formType === "signup") {
+			this.props.signup({user});
+		} else {
+			this.props.login({user});
+		}
 	}
 
 	handleFrontEndErrors() {

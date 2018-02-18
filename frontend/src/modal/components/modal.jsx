@@ -20,7 +20,7 @@ class Modal extends React.Component {
         this.closeModal = this.closeModal.bind(this)
     }
 
-    closeModal() {
+    closeModal(e) {
         this.props.closeModal(); 
     }
 
@@ -31,9 +31,9 @@ class Modal extends React.Component {
         }
 
         return (
-            <div className="modal-background" onClick={this.closeModal}>
+            <div className="modal-background" onClick={(e) => this.closeModal(e)}>
                 {/* <div className="modal-close" onClick={this.closeModal}>X</div> */}
-                <div className='modal-content'>
+                <div className='modal-content' onClick={(e) => e.stopPropagation()}>
                     {this.props.modalContent}   
                 </div>
             </div>

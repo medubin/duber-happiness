@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { logout } from '../../user/actions/user_actions';
+import {openModal} from '../../modal/actions/modal_actions'
+import UserForm from '../../user/components/user_form';
 import '../scss/navbar.css'
 
 const mapStateToProps = ({ user }) => ({
@@ -10,6 +12,8 @@ const mapStateToProps = ({ user }) => ({
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
+  openModal: (modalContent) => dispatch(openModal(modalContent)) 
+
 });
 
 
@@ -33,17 +37,17 @@ class Navbar extends React.Component {
           <a className='navbar-logo'>Dubster</a>
             <ul>
               <li><Link to="/"></Link></li>
-              <li><Link to="/login" onClick={this.logout}>Logout</Link></li>
+              <li><Link to="/" onClick={this.logout}>Logout</Link></li>
             </ul>
         </nav>
        )
      } else {
        return (
          <nav className='navbar'>
-           <a className='navbar-logo'>Dubster</a>
+           <a className='navbar-logo'>Duber</a>
              <ul>
-               <li><Link to="/login">Login</Link></li>
-               <li><Link to="/signup">Sign up!</Link></li>
+               <li><div onClick={() => this.props.openModal(<UserForm formType="login"/>)} >Login</div></li>
+               <li><div onClick={() => this.props.openModal(<UserForm formType="signup"/>)} >Sign Up!</div></li>
              </ul>
          </nav>
        )
