@@ -1,16 +1,17 @@
 class Api::DaysController < ApplicationController
     def index
         if (!current_user)
-            render json: "User not found", status: 422
+            @days = [];
         else
             @days = current_user.days
-            render "api/days/index"
         end
+        render "api/days/index"
     end
 
     def create
         if (!current_user)
-            render json: "User not found", status: 422
+            @day = Day.create(day_params);
+            render "api/days/show"
             return
         end
         @day = Day.find_by user_id: current_user.id, date: day_params[:date]
