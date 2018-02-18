@@ -33,23 +33,28 @@ class ShowDays extends React.Component {
 
     renderDays() {
         let days = [];
+        let finalDays = [];
         let startDate = new Date();
         startDate.setFullYear( startDate.getFullYear() - 1 );
-        for(let i = 0; i <= 365; i++) {
+        for(let i = 365; i >= 0; i--) {
             let happiness = 0;
             let currentDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + i);
             let selected = stringifyDate(currentDate) === this.props.selectedDay;
             if (this.props.days[stringifyDate(currentDate)] !== undefined ){
                 happiness = this.props.days[stringifyDate(currentDate)];
             }
-            if (i === 0) {
-                for(let j = 0; j < currentDate.getDay(); j++) {
+            if (i === 365) {
+                for(let j = 0; j < 6 -currentDate.getDay(); j++) {
                     days.push(<div key={'bd' + j} className='blank-day'></div>)
                 }
             }
             days.push(<Day selectDay={this.selectDayCallBack} key={i} date={currentDate} happiness={happiness} selected={selected} />);
+            if (days.length === 7) {
+                finalDays = finalDays.concat(days.reverse());
+                days = []
+            }
         }
-        return days;
+        return finalDays;
     }
 
     render() {
