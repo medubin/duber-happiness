@@ -10,20 +10,11 @@ const mapStateToProps = ({ user }) => ({
   errors: user.errors
 });
 
-const mapDispatchToProps = (dispatch) => ({
-	// const formType = location.pathname.slice(1);
-	// const formType = 'login';
-	// const processForm = (formType === 'login') ? login : signup;
-	
+const mapDispatchToProps = (dispatch) => ({	
 	login: (user) => dispatch(login(user)),
 	signup: (user) => dispatch(signup(user)),
 	closeModal: () => dispatch(closeModal)
 
-
-  // return {
-    // processForm: user => dispatch(processForm(user)),
-    // formType
-  // };
 });
 
 
@@ -90,7 +81,6 @@ class UserForm extends Form {
 	
 	navLink() {
 		if (this.state.formType === "login") {
-			// return <Link to="/signup"></Link>;
 			return <div onClick={() => this.setState({formType: 'signup'})} >sign up instead</div>
 		} else {
 			return <div onClick={() => this.setState({formType: 'login'})} >log in instead</div>

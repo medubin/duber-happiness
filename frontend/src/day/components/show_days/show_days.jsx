@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import {getDays, selectDay} from '../../actions/day_actions'
 import Day from './day';
 import {stringifyDate} from '../../util/days_util'
+import Week from './week';
 
 const mapStateToProps = ({day}) => ({
     days: day.days,
@@ -41,13 +42,23 @@ class ShowDays extends React.Component {
             if (this.props.days[stringifyDate(currentDate)] !== undefined ){
                 happiness = this.props.days[stringifyDate(currentDate)];
             }
+            if (i === 0) {
+                for(let j = 0; j < currentDate.getDay(); j++) {
+                    days.push(<div className='blank-day'></div>)
+                }
+            }
             days.push(<Day selectDay={this.selectDayCallBack} key={i} date={currentDate} happiness={happiness} selected={selected} />);
         }
         return days;
     }
 
     render() {
-        return <div className='days-container'>{this.renderDays()}</div>
+        return (
+            <div> 
+                <Week />
+                <div className='days-container'>{this.renderDays()}</div>
+            </div>
+        );
     }
 }
 
