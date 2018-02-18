@@ -28,6 +28,9 @@ class CreateDay extends React.Component {
     } 
 
     render() {
+        if (!this.props.selectedDay) {
+            return <div/>
+        }
         return (
         <div>
             <SelectedDay selectedDay={this.props.selectedDay} />
