@@ -26,22 +26,23 @@ nav.navbar {
 
 
   ul {
-    display: block;
+    display: flex;
+    align-items: center;
     text-align: right;
     list-style: none;
     padding: 0;
-    margin: 0;
-    overflow: scroll;
+
 
 
     li {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      
 
-      a {
-        display: inline-block;
+      a, div {
         padding: 0 2rem;
         color: black;
-        height: 80px;
+
         line-height: 80px;
         font-weight: bold;
         text-decoration: none;

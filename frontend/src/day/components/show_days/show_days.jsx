@@ -44,7 +44,7 @@ class ShowDays extends React.Component {
             }
             if (i === 0) {
                 for(let j = 0; j < currentDate.getDay(); j++) {
-                    days.push(<div className='blank-day'></div>)
+                    days.push(<div key={'bd' + j} className='blank-day'></div>)
                 }
             }
             days.push(<Day selectDay={this.selectDayCallBack} key={i} date={currentDate} happiness={happiness} selected={selected} />);

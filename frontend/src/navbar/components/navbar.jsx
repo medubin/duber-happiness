@@ -34,7 +34,7 @@ class Navbar extends React.Component {
     if(this.props.currentUser) {
       return (
         <nav className='navbar'>
-          <a className='navbar-logo'>Dubster</a>
+          <a className='navbar-logo'>Duber-Happiness</a>
             <ul>
               <li><Link to="/"></Link></li>
               <li><Link to="/" onClick={this.logout}>Logout</Link></li>
@@ -44,7 +44,7 @@ class Navbar extends React.Component {
      } else {
        return (
          <nav className='navbar'>
-           <a className='navbar-logo'>Duber</a>
+           <a className='navbar-logo'>Duber-Happiness</a>
              <ul>
                <li><div onClick={() => this.props.openModal(<UserForm formType="login"/>)} >Login</div></li>
                <li><div onClick={() => this.props.openModal(<UserForm formType="signup"/>)} >Sign Up!</div></li>
