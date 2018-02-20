@@ -14,8 +14,9 @@ import configureStore from './store';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
-  if (window.currentUser) {
-    const preloadedState = { user: { currentUser: window.currentUser } };
+  let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  if (currentUser) {
+    const preloadedState = { user: { currentUser: currentUser } };
     store = configureStore(preloadedState);
   } else {
     store = configureStore();

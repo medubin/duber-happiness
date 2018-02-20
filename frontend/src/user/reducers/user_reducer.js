@@ -14,12 +14,15 @@ const UserReducer = (state = _nullUser, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-      window.currentUser = action.currentUser;
       const userFetched = true
-      const currentUser = action.currentUser;
-      return merge({}, _nullUser, {currentUser, userFetched});
+      // if (action.currentUser) {
+        localStorage.setItem('currentUser', JSON.stringify(action.currentUser));
+        const currentUser = action.currentUser;
+        return merge({}, _nullUser, {currentUser, userFetched});
+      // }
+      // return state;
     case LOGOUT:
-      window.currentUser = null;
+      localStorage.removeItem('currentUser');
       return merge({}, _nullUser);
     case RECEIVE_ERRORS:
       const errors = action.errors;
